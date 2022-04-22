@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 export default function AccountVerificationSuccessAlert() {
   const dispatch = useDispatch();
-  //dispatch(logoutAction());
+ 
   return (
     <div className="rounded-md bg-green-50 p-4">
       <div className="flex">
