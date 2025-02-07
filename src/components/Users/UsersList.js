@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsersAction } from "../../redux/slices/users/usersSlices";
-import ServerErrors from "../ErrorMessage/SeverErrors/ServerErrors";
 import LoadingComponent from "../Loading/LoadingComponent";
-import UsersListHeader from "./UsersListHeader";
 import UsersListItem from "./UsersListItem";
 
 const UsersList = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.users);
-  const { appErr, serverErr, loading, usersList, userAuth, block, unblock } = user;
+  const { appErr, serverErr, loading, usersList, block, unblock } = user;
   useEffect(() => {
     dispatch(fetchUsersAction(''));
   }, [dispatch, block,unblock]);

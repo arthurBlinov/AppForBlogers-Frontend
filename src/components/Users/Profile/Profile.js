@@ -31,13 +31,6 @@ const Profile = () => {
     if(profile?._id != id)
     dispatch(viewedProfile(id))
 }, [dispatch, id])
-
-  const navigate = useNavigate();
-  const goToSendEmail = () => {
-      navigate('api/email/send-email', {
-        state: profile?._id
-      })
-  }
   const isLoginUser = userAuth?._id === profile?._id;
   return (
     <>

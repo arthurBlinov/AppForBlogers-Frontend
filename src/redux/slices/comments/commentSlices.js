@@ -1,15 +1,8 @@
 import { createAsyncThunk, createSlice, createAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import baseURL from "../../../utils/baseURL";
-//import errorNotication from "../../../utils/errorNotication";
-//import toasterNotification from "../../../utils/toasterNotification";
 
-//----------------------------------------------------------------
-
-
-//-------------------------------
 //Create
-//-------------------------------
 export const createCommentAction = createAsyncThunk(
   "comment/create",
   async (comment, { rejectWithValue, getState, dispatch }) => {
@@ -125,7 +118,7 @@ export const deleteCommentAction = createAsyncThunk(
     }
   }
 );
-//Custom action to reset the data for redirect
+
 const resetCommentAction = createAction("comment-edited/reset");
 //slices
 const commentSlices = createSlice({

@@ -12,22 +12,21 @@ import CommentsList from "../Comments/CommentsList";
 const PostDetails = () => {
    const {id} = useParams();
    const dispatch = useDispatch();
-   
    //select post details from store 
    const post = useSelector(state => state?.posts);
-   const {postDetails, loading, appErr, serverErr, isDeleted} = post
+   const {postDetails, loading, appErr, serverErr, isDeleted} = post;
    const user = useSelector(state => state?.users);
-   
    const {userAuth} = user;
-   
    const comment = useSelector(state => state?.comments);
    const {commentCreated, commentDeleted} = comment;
-   useEffect(() => {dispatch(fetchPostDetailsAction(id))}, [id, dispatch, commentCreated, commentDeleted]);
-   console.log(comment);
-   console.log(postDetails, postDetails?.id);
+   useEffect(() => {
+    dispatch(fetchPostDetailsAction(id))}, 
+    [id, dispatch, commentCreated, commentDeleted]
+  );
    //redirect
-   if(isDeleted) 
-        return <Navigate to='/posts'/>
+   if(isDeleted) {
+      return <Navigate to='/posts'/>
+   }
    return (
     <>
     {loading ? <div className="h-screen">
@@ -71,9 +70,8 @@ const PostDetails = () => {
             <p className="mb-6 text-left  text-xl text-gray-200">
               {postDetails?.description}
              </p>
-              {/* Show delete and update btn if it was created by the user */}
              {(postDetails?.user?._id === userAuth?._id || userAuth?.isAdmin) ?  <p className="flex">
-                <Link to={`/update-post/${postDetails?._id}`} className="p-3">
+                <Link to={`/update-post/${postDetails?.id}`} className="p-3">
                   <Pencil className="h-8 mt-3 text-yellow-300" />
                 </Link>
                 <button onClick={() => dispatch(deletePostAction(postDetails?.id))} className="ml-3">

@@ -1,10 +1,8 @@
-import { createAsyncThunk, createSlice, createAction} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import baseURL from "../../../utils/baseURL";
 
 
-//action to redirect
-// const resetAcc = createAction('account/cerify-reset');
 //Create
 export const accVerificationSendTokenAction = createAsyncThunk(
   "account/token",
@@ -27,13 +25,6 @@ export const accVerificationSendTokenAction = createAsyncThunk(
         },
         config
       );
-      //toasterNotification("Email Sent")(); //This function returns another function so we will call the first on and the second one
-      //OR
-      // const fn = toasterNotification();
-      // fn()
-
-      //dispatch
-      //dispatch(resetAcc());
       return data;
     } catch (err) {
       if (!err.response) {
@@ -51,15 +42,12 @@ export const verifyAccountAction = createAsyncThunk(
     "/account/verify/:token",
     async (tokens, { rejectWithValue, getState, dispatch }) => {
       const user = getState()?.users;
-      //console.log(token);
       const { userAuth } = user;
       const config = {
         headers: {
           Authorization: `Bearer ${userAuth?.token}`,
         },
       };
-      console.log(userAuth);
-      
       try {
         const { data } = await axios.put(
           `${baseURL}/api/users/verify-account/${tokens}`,
@@ -69,13 +57,6 @@ export const verifyAccountAction = createAsyncThunk(
           },
           config
         );
-        //toasterNotification("Email Sent")(); //This function returns another function so we will call the first on and the second one
-        //OR
-        // const fn = toasterNotification();
-        // fn()
-  
-        //dispatch
-        //dispatch(resetAcc());
         return data;
       } catch (err) {
         if (!err.response) {
@@ -112,13 +93,9 @@ const accVerificationSlices = createSlice({
       builder.addCase(verifyAccountAction?.pending, (state, action) => {
         state.loading = true;
       });
-      // builder.addCase(resetAcc, (state, action) => {
-      //   state.isVerified = true;
-      // });
       builder.addCase(verifyAccountAction?.fulfilled, (state, action) => {
         state.verified = action?.payload;
         state.loading = false;
-        //state.isVerified = false;
         state.appErr = undefined;
         state.serverErr = undefined;
         

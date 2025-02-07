@@ -11,8 +11,6 @@ const PrivateProtectedRoute = () => {
     const {userAuth} = user;
     return (
     userAuth?.isAdmin ? <AddNewCategory/>:<Navigate to='/login'/> 
-
-    
   )
 }
 

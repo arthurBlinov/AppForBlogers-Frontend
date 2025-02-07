@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import {fetchPostDetailsAction, updatePostAction} from "../../../redux/slices/posts/postSlices";
 import CategoriesOptions from "../../Categories/CategoryDropDown";
-import DisabledBtn from "../../DisabledBtn/DisabledBtn";
-import ServerErrors from "../../ErrorMessage/SeverErrors/ServerErrors";
-import LoadingComponent from "../../Loading/LoadingComponent";
 
 const formSchema = Yup.object({
   title: Yup.string().required("Title is required"),
@@ -18,6 +15,7 @@ const formSchema = Yup.object({
 export default function UpdatePost() {
   const {id} = useParams();
   const dispatch = useDispatch();
+  const navigation = useNavigate();
   //Fetch post
   useEffect(() => {
      dispatch(fetchPostDetailsAction(id));
@@ -25,7 +23,6 @@ export default function UpdatePost() {
   //store
   const postData = useSelector((state) => state?.posts);
   const {loading, postDetails, serverErr, appErr, isUpdated } = postData;
-  console.log(isUpdated);
   //formik
   const formik = useFormik({
     enableReinitialize: true,
@@ -43,13 +40,11 @@ export default function UpdatePost() {
       };
 
       dispatch(updatePostAction(data));
+      navigation('/posts');
     },
     validationSchema: formSchema,
   });
-  //Redirect
-  if (isUpdated) {
-    return <Navigate to="/posts" />;
-  }
+  
   return (
     <>
       

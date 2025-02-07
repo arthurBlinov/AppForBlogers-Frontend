@@ -2,42 +2,31 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ThumbDown, ThumbUp, Eye} from "@styled-icons/heroicons-outline";
-// import {
-//   fetchPostsAction,
-//   toggleAddLikeToPostAction,
-//   toggleAddDislikeToPostAction,
-// } from "../../redux/slices/posts/postSlices";
-import LoadingComponent from '../../utils/LoadingComponent';
 import DateFormatter from "../DateFormatter/DateFormatter";
 import { fetchPostsAction, toggleAddDisLikesToPost, toggleAddLikesToPost } from "../../redux/slices/posts/postSlices";
 import { fetchCategoriesAction } from "../../redux/slices/categories/categoriesSlices";
 import capitalizeWord from "../../utils/capitalizeWord";
 
-// import ServerErrors from "../ErrorMessage/SeverErrors/ServerErrors";
-
 export default function PostsList() {
 
   //select posts from store
   const post = useSelector((state) => state?.posts);
-  const { loading, appErr, serverErr, postLists, dislikes, likes } = post; 
+  const { appErr, serverErr, postLists } = post; 
   //select categories from store
   const categories = useSelector((state) => state?.category);
-  const { categoryList, loading:catLoading, appErr:catAppErr, serverErr:catServerErr } = categories;
+  const { categoryList, appErr:catAppErr, serverErr:catServerErr } = categories;
    
   //dispatch
   const dispatch = useDispatch();
-console.log(likes);
-console.log(dislikes);
-  //Fetch posts
-  // useEffect(() => {
-  //   dispatch(fetchPostsAction());
-  // }, [dispatch, likes, dislikes]);
   
    //Fetch categories
-useEffect(() => {
-    dispatch(fetchCategoriesAction());
+  useEffect(() => {
+      dispatch(fetchCategoriesAction());
   }, [dispatch]);
   
+  useEffect(() => {
+      dispatch(fetchPostsAction(''))
+  }, [postLists])
   return (
     <>
       <section>
@@ -153,10 +142,6 @@ useEffect(() => {
                         </div>
                       </div>
                     </div>
-                    {/* <p class="text-gray-500">
-                          Quisque id sagittis turpis. Nulla sollicitudin rutrum
-                          eros eu dictum...
-                        </p> */}
                   </div>
                 </div>
                     ))}

@@ -1,18 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Mail } from "@styled-icons/heroicons-outline";
 import {
   blockUserAction,
   unBlockUserAction,
 } from '../../redux/slices/users/usersSlices';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, } from "react-redux";
 
 const UsersListItem = (user) => {
   //check if isAdmin
-  const isAdmin = user?.user?.isAdmin;
   const dispatch = useDispatch();
- 
-  console.log(user?.user);
   return (
     <>
       <div className="p-8 mb-4 bg-white shadow rounded">

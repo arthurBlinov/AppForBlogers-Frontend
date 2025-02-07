@@ -154,7 +154,7 @@ export const deletePostAction = createAsyncThunk(
 //fetch post details
 export const fetchPostDetailsAction = createAsyncThunk(
   "post/details",
-  async (id, { rejectWithValue, getState, dispatch }) => {
+  async (id, { rejectWithValue }) => {
     
     try {
      

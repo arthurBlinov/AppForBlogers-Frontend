@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import LoadingComponent from "../../Loading/LoadingComponent";
-import { viewedProfile } from '../../../redux/slices/users/usersSlices';
+import React from 'react'
+import { Link } from "react-router-dom";
+
 const ViewedBy = ({viewedBy}) => {
   return (
       <>{viewedBy.length <= 0 ? null : viewedBy?.map((user) => (

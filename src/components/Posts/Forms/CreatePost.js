@@ -32,12 +32,9 @@ border-color:'red'
 
 export default function CreatePost() {
   const dispatch = useDispatch();
-
   //select store data
   const post = useSelector(state => state.posts);
-  console.log(post);
   const { isCreated, loading, appErr, serverErr } = post;
-  console.log(post.isCreated);
   //formik
   const formik = useFormik({
     initialValues: {

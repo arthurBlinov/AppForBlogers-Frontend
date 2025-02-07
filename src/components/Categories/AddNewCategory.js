@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createCategoryAction, fetchCategoriesAction } from "../../redux/slices/categories/categoriesSlices";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const formSchema = Yup.object({
   title: Yup.string().required("Title is required"),
@@ -68,12 +67,8 @@ const AddNewCategory = () => {
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center focus:z-10 sm:text-sm"
                 placeholder="New Category"
               />
-              {/* <div className="text-red-400 mb-2">
-                 {formik.touched.title && formik.errors.title}
-              </div> */}
             </div>
           </div>
-
           <div>
             <div>
               {/* Submit */}

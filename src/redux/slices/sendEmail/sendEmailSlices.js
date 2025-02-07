@@ -1,15 +1,11 @@
 import { createAsyncThunk, createSlice, createAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import baseURL from "../../../utils/baseURL";
-import toasterNotification from "../../../utils/toasterNotification";
 
-//----------------------------------------------------------------
 //Custom action to reset the data for redirect
 const resetEmailSentAction = createAction("emailSent/reset");
 
-//-------------------------------
 //Create
-//-------------------------------
 export const sendEmailAction = createAsyncThunk(
   "/send-email",
   async (data, { rejectWithValue, getState, dispatch }) => {
@@ -33,15 +29,6 @@ export const sendEmailAction = createAsyncThunk(
         },
         config
       );
-
-      //toasterNotification("Email Sent")(); //This function returns another function so we will call the first on and the second one
-      //OR
-      // const fn = toasterNotification();
-      // fn()
-
-      //dispatch
-      //console.log(data);
-      //dispatch(resetEmailSentAction());
       return data;
     } catch (err) {
       if (!err.response) {
@@ -56,7 +43,7 @@ export const sendEmailAction = createAsyncThunk(
 //fetch single Comment
 export const fetchCommentAction = createAsyncThunk(
   "fetch-emails",
-  async (id, { rejectWithValue, getState, dispatch }) => {
+  async (id, { rejectWithValue, getState }) => {
     const user = getState()?.user;
     const { userAuth } = user;
     const config = {

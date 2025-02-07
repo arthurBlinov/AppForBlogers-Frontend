@@ -11,7 +11,7 @@ const DisplayErrorMessage = () => {
         </div>
         <div className="w-full md:w-1/2 px-4 py-16 md:py-0 text-center bg-gray-900">
           <span className="text-3xl lg:text-4xl text-blue-600 font-bold font-heading">
-            Whoops!
+            Oops!
           </span>
           <h2 className="mb-2 text-xl lg:text-2xl text-red-600 mt-2  font-bold font-heading">
             Message here

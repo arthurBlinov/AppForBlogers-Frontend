@@ -17,7 +17,7 @@ const CategoryDropdown = (props) => {
     }, [dispatch]);
     //select categories
     const category = useSelector(state => state?.category);
-    const {categoryList, loading, appErr, serverErr} = category;
+    const {categoryList, loading,} = category;
     const allCategories= categoryList?.map(category => {
        return { label: category?.title,
                 value: category?._id

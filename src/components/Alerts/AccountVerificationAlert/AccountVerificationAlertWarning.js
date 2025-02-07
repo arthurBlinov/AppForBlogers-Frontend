@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { Exclamation } from '@styled-icons/heroicons-outline';
 import { useDispatch, useSelector } from 'react-redux';
 import { accVerificationSendTokenAction } from '../../../redux/slices/accountVerification/accVerificationSlices';
-import { logoutAction } from '../../../redux/slices/users/usersSlices';
-
 
 const AccountVerificationAlertWarning = (email) => {
   const dispatch = useDispatch();

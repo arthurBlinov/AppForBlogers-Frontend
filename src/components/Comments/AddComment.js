@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, } from "react-redux";
 import { createCommentAction } from "../../redux/slices/comments/commentSlices";
 
 
@@ -12,9 +12,7 @@ const formSchema = Yup.object({
 
 
 const AddComment = ({postId}) => {
-
   const dispath = useDispatch();
-  console.log(postId);
   const formik = useFormik({
     initialValues: {
       description: ''

@@ -1,6 +1,5 @@
 import { PlusCircle, BookOpen } from "@styled-icons/heroicons-outline";
 import { useEffect, useState } from "react";
-
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
@@ -44,11 +43,7 @@ const UpdateCategory = () => {
       title: category?.title,
     },
     onSubmit: values => {
-      //build up the date for update
-
-      //dispath the action
       dispatch(updateCategoriesAction({ title: values.title, id})).then(() => {
-        // Refresh the category list after deletion
         dispatch(fetchCategoriesAction());
         navigate("/category-list");
       });

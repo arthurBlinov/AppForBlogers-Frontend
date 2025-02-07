@@ -81,8 +81,6 @@ export const updateUserPasswordAction = createAsyncThunk(
         passwordsData,
         config
       );
-      console.log(data);
-      
       //dispatch
       dispatch(resetUserPasswordAction());
       return data;
@@ -108,8 +106,7 @@ export const loginUserAction = createAsyncThunk(
         userData, config
       );
       //save user into local storage
-       localStorage.setItem("userInfo", JSON.stringify(data));
-
+      localStorage.setItem("userInfo", JSON.stringify(data));
       return data;
     } catch (error) {
       if (!error?.response) {
@@ -270,8 +267,6 @@ export const uploadProfileAction = createAsyncThunk(
         formData,
         config
       );
-      //dispatch action
-      //dispatch(resetPost());
       return data;
     } catch (error) {
       if (!error?.response) throw error;
@@ -310,7 +305,6 @@ export const fetchUsersAction = createAsyncThunk(
      
       return data;
     } catch (error) {
-      console.log('hello');
       if(!error.response) throw error;
       return rejectWithValue(error?.response?.data)
     }
@@ -330,7 +324,6 @@ export const blockUserAction = createAsyncThunk(
     }
     try {
       const {data} = await axios.put(`${baseUrl}/api/users/block-user/${id}`, {}, config);
-     
       return data;
     } catch (error) {
       if(!error.response) throw error;
@@ -343,7 +336,6 @@ export const blockUserAction = createAsyncThunk(
 export const unBlockUserAction = createAsyncThunk(
   'user/unblock',
   async(id, {rejectWithValue, getState, dispatch}) => {
-    
     //get user token
     const user = getState()?.users;
     const {userAuth} = user;
@@ -354,7 +346,6 @@ export const unBlockUserAction = createAsyncThunk(
     }
     try {
       const {data} = await axios.put(`${baseUrl}/api/users/unblock-user/${id}`, {}, config);
-     
       return data;
     } catch (error) {
       if(!error.response) throw error;
@@ -367,9 +358,6 @@ export const unBlockUserAction = createAsyncThunk(
 const userLoginFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
-
- 
-
 
 //slices
 const usersSlices = createSlice({

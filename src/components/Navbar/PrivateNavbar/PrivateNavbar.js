@@ -1,5 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
+import { Fragment, } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -20,8 +20,7 @@ function classNames(...classes) {
 const PrivateNavbar = ({ isLogin }) => {
   const navigate = useNavigate('/');
   const user = useSelector((state) => state.users);
-  const { userAuth } = user;
-  
+  const { userAuth, profile } = user;
   const navigation = [
     { name: "Home", href: "/", current: true },
     { name: "Create", href: "/create-post", current: false },
@@ -113,7 +112,7 @@ const PrivateNavbar = ({ isLogin }) => {
                             <span className="sr-only">Open user menu</span>
                             <img
                               className="h-8 w-8 rounded-full"
-                              src={userAuth?.profilePhoto}
+                              src={profile ? profile?.profilePhoto : userAuth.profilePhoto}
                               alt=""
                             />
                           </Menu.Button>

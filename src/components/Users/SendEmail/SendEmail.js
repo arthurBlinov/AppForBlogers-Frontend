@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { sendEmailAction } from "../../../redux/slices/sendEmail/sendEmailSlices";
-//import Profile from "../Profile/Profile";
-
 
 //Form schema
 const formSchema = Yup.object({

@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-
 import { Link } from "react-router-dom";
 import {
   Bell,
@@ -31,10 +30,8 @@ const AdminNavbar = ({isLogin}) => {
   const userNavigation = [
     { name: "Your Profile", href: `/profile/${isLogin?._id}` },
     { name: "Change your password", href: "/password/password" },
-    { name: "Settings", href: "/update-password" },
   ];
  const dispatch = useDispatch();
- console.log(isLogin);
   return (
     <Disclosure as="nav" className="bg-green-800">
       {({ open }) => (

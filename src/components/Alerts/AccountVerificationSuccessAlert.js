@@ -1,12 +1,7 @@
 import React from 'react';
 import { CheckCircle } from '@styled-icons/heroicons-outline';
-import { logoutAction } from '../../redux/slices/users/usersSlices';
-import { useDispatch } from 'react-redux';
-
 
 export default function AccountVerificationSuccessAlert() {
-  const dispatch = useDispatch();
-  //dispatch(logoutAction());
   return (
     <div className="rounded-md bg-green-50 p-4">
       <div className="flex">
