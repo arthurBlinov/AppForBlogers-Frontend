@@ -23,7 +23,6 @@ const AddComment = ({postId}) => {
           description: values?.description
         }
         dispath(createCommentAction(data));
-        console.log(data);
     },
       validationSchema: formSchema
       

@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Dropzone from "react-dropzone";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { createpostAction } from "../../../redux/slices/posts/postSlices";
@@ -32,6 +32,7 @@ border-color:'red'
 
 export default function CreatePost() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   //select store data
   const post = useSelector(state => state.posts);
   const { isCreated, loading, appErr, serverErr } = post;
@@ -45,7 +46,6 @@ export default function CreatePost() {
     },
     onSubmit: values => {
       //dispath the action
-      console.log(values);
       const data = {
         category: values?.category?.label,
         title: values?.title,
@@ -54,12 +54,13 @@ export default function CreatePost() {
       
       };
       dispatch(createpostAction(data));
+      setTimeout(() => {
+        navigate('/posts');
+      }, 2200)
     },
     validationSchema: formSchema,
   });
 
-  //redirect
-  if (isCreated) return <Navigate to="/posts" />;
   return (
     <>
       <div className="min-h-screen bg-gray-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8">

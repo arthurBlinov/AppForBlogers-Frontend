@@ -11,11 +11,10 @@ export default function PostsList() {
 
   //select posts from store
   const post = useSelector((state) => state?.posts);
-  const { appErr, serverErr, postLists } = post; 
+  const { appErr, serverErr, postLists, likes, dislikes } = post;
   //select categories from store
   const categories = useSelector((state) => state?.category);
   const { categoryList, appErr:catAppErr, serverErr:catServerErr } = categories;
-   
   //dispatch
   const dispatch = useDispatch();
   
@@ -26,7 +25,7 @@ export default function PostsList() {
   
   useEffect(() => {
       dispatch(fetchPostsAction(''))
-  }, [postLists])
+  }, [likes, dislikes])
   return (
     <>
       <section>
