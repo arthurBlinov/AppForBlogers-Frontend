@@ -2,12 +2,6 @@ import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import {fetchCategoriesAction} from '../../redux/slices/categories/categoriesSlices';
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-  ]
-
 
 const CategoryDropdown = (props) => {
     //dispatch action

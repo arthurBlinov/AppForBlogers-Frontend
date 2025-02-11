@@ -37,7 +37,6 @@ export default function UpdateComment() {
     },
     validationSchema: formSchema,
   });
-  console.log(isUpdated);
   //Redirect
   if (isUpdated) {
    

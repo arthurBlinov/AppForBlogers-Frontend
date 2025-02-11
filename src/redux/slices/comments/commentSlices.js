@@ -15,7 +15,7 @@ export const createCommentAction = createAsyncThunk(
     };
     try {
       const { data } = await axios.post(
-        `${baseURL}/api/comments`,
+        `${baseURL}/api/comments/`,
         { 
           description: comment?.description,
           postId: comment?.postId, 
